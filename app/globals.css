@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --bg-deep: #050a07;
+  --bg-card: #0a1610;
+  --bg-card-hover: #0f1f17;
+  --bg-surface: #111a15;
+  --border-main: #1a3324;
+  --border-glow: #00ff8830;
+  --green-neon: #00ff88;
+  --green-mid: #10b981;
+  --green-dim: #065f46;
+  --green-text: #4ade80;
+  --text-primary: #e0f2e9;
+  --text-secondary: #8faf9b;
+  --text-muted: #5a7a68;
+  --orange-accent: #f97316;
+  --red-accent: #ef4444;
+  --blue-accent: #3b82f6;
+}
+
+@theme inline {
+  --color-background: var(--bg-deep);
+  --color-foreground: var(--text-primary);
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
+  --color-sidebar-ring: var(--green-neon);
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 4px; }
+
+/* Glow animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px var(--green-neon), 0 0 24px rgba(0, 255, 136, 0.15); }
+  50% { box-shadow: 0 0 20px var(--green-neon), 0 0 40px rgba(0, 255, 136, 0.25); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.glow-green {
+  text-shadow: 0 0 10px var(--green-neon), 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.card-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, transparent 0%, rgba(0,255,136,0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.ticket-border {
+  border: 1px solid var(--border-main);
+  border-left: 3px solid var(--green-neon);
+}
+
+.odds-badge {
+  background: linear-gradient(135deg, var(--green-dim), rgba(0, 255, 136, 0.15));
+  border: 1px solid var(--green-neon);
+  color: var(--green-neon);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+/* Safe area for mobile */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
